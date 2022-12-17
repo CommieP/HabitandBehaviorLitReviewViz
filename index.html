@@ -1,0 +1,1098 @@
+<head>
+
+    <title>H&B Experience</title>
+
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/mwv2lbb.css">
+</head>
+
+<body>
+
+<canvas id="c"></canvas>
+
+<div id="loadingScreen">
+    <div id="loadingPercent">Loading... 0%</div>
+    <div id = "loadingBar">
+        <div id = "loadingProgress"></div>
+    </div>
+    <div id="loadingFiles">0 of 0 files Loaded</div>
+</div>
+
+<div id="HUDOverlayBottom">
+    <div id="move" class="HUDBottomElement">
+        <img class = "HUDKeys" id = "wHUD" src="images/W.png">
+        <img class = "HUDKeys" id = "aHUD" src="images/A.png">
+        <img class = "HUDKeys" id = "sHUD" src="images/S.png">
+        <img class = "HUDKeys" id = "dHUD" src="images/D.png">
+        <div class = "HUDText">Move</div>
+    </div>
+
+    <div id="mouse" class="HUDBottomElement">
+        <img class = "HUDKeys" id = "lookHUD" src="images/look.png">
+        <div class = "HUDText">Look</div>
+        <img class = "HUDKeys" id = "interactHUD" src="images/interact.png">
+        <div class = "HUDText" id = "interactObject">Interact</div>
+    </div>
+
+    <div id="pause" class="HUDBottomElement">
+        <img class = "HUDKeys" id = "pHUD" src="images/E.png">
+        <div class = "HUDText">Lock/Unlock Controls</div>
+    </div>
+</div>
+
+<div style="display: none"  id="introDiv" class="popUp">
+    <div id="introCloseContainer">
+        <button id="introCloseButton"></button>
+    </div>
+    <div class="slide" id="p1s1">
+        <div id="introTitle">Welcome to an immersive experience!</div>
+        <div class = "introContent">
+            Through this experience you can understand various theories associated with neural networks.
+            These neural networks are controlled through various habitual practices and gets reflected through
+            human behavior.
+        </div>
+        <div id="introAudioContainer">
+            <button id="introPlayMute"></button>
+            <audio id="introAudio">
+                <source src="./audio/INTRODUCTION.mp3" type="audio/mp3">
+              </audio>
+        </div>
+    </div>
+
+    <div class="slide" id="p1s2">
+        <div class = "introContent">
+            Here we are currently exploring 4 theories and how they affect our habits & behaviour. Before we
+            start, a few key words to keep in mind: 
+        </div>
+        <div class= "introSubtitle">Neuron</div>
+        <div class = "introContent">
+            The basic building block of the brain is composed of a cell body, synapses and dendrites. They
+            transmit information to other neurons through electric currents.
+        </div>
+
+        <div class= "introSubtitle">Neural Network</div>
+        <div class = "introContent">
+            A group of connected neurons.
+        </div>
+
+        <div class= "introSubtitle">Synapse</div>
+        <div class = "introContent">
+            The contact point is where one neuron meets another, allowing them to pass messages to each other.
+        </div>
+
+        <div class= "introSubtitle">Synaptic Efficacy</div>
+        <div class = "introContent">
+            One neuron will easily activate another through a synapse, a connection strengthened with repetition.
+        </div>
+    </div>
+
+    <div class="slide" id="p1s3">
+        <div class = "introContent">
+            Make Discovery of how theories effects in vast VR space. Set out on the Immersive virtual adventure to discover
+            depths of the brain and have a blissful VR experience inside the human brain. 
+        </div>
+        <div class = "introContent">
+            The Neurons are information messengers so here neurons connect theories like:
+        </div>
+        <div class = "introContent">
+            <b>Habit Discontinuity</b> which talks about Unfreezing old habits, information, acquisitions and processing, value activation
+            and change and etc.
+        </div>
+        <div class = "introContent">
+            The Flow theory speaks about condition of flow, flow state, Autotelic personality, Paradoxical experience, etc. Hebb's theory
+            gets indulged in the Neural network, mirrored neurons, stimuli, etc.
+        </div>
+        <div class = "introContent">
+            TPB (Theory of Planned Behavior), a psychological hypothesis that connects attitudes and actions. According to the idea,
+            an individual's behavioral intentions are shaped by three key factors: attitude, subjective norms, and perceived behavioral control.
+        </div>
+        <div id="introStartContainer">
+            <button id="introStartButton">Start</button>
+        </div>
+    </div>
+
+    <div class="paginationRow">
+        <div class = "dot active" id="p1p1"></div>
+        <div class = "dot" id="p1p2"></div>
+        <div class = "dot" id="p1p3"></div>
+    </div>
+
+    <div class="next" id = "np1">next</div>
+    <div class="prev" id = "pp1">prev</div>
+</div>
+
+<div  id="htDiv" class="popUp infoPopup activeDiv">
+    <div class="infoCloseContainer">
+        <button class="infoCloseButton"></button>
+    </div>
+
+    <div class="infoSlide slide1" >
+        <div class="infoTitle">
+            Hebbian Learning Theory
+        </div>
+        <div class = "infoText">
+            A neuroscientific concept, introduced by Donald Hebb, in his publication "The organisation of  behaviour”. 
+        </div>
+    </div>
+
+    <div class="infoSlide slide2" >
+        <div class="infoSubtitle">
+            Basis
+        </div>
+        <div class = "infoText">
+            The basis of this concept is, when our brain learns something new, neurons are activated and connected
+            with other neurons, forming a neural network. These connections are weak at first, but they grow stronger,
+            each time the stimulus is repeated. Making the response/action more intuitive. 
+        </div>
+    </div>
+
+    <div class="infoSlide slide3" >
+        <div class="infoSubtitle">
+            Mirror neurons  
+        </div>
+        <div class = "infoText">
+            In some cases, neurons can be activated not only when an individual performs a certain action,  but also when
+            that same individual, observes someone else perform a similar action. These are  known as mirror neurons. 
+        </div>
+    </div>
+
+    <div class="infoSlide slide4" >
+        <div class="infoSubtitle">
+            Learned Helplessness  
+        </div>
+        <div class = "infoText">
+            When an individual is exposed to repeated and uncontrollable negative stimuli, and they stop  trying to change
+            their circumstances, even when they posses the ability to do so, it can lead to  learned helplessness.  
+        </div>
+    </div>
+
+    <div class="infoSlide slide5" >
+        <div class="infoSubtitle">
+            Example 
+        </div>
+        <div class = "infoText">
+            When an individual starts learning how to drive, every action they make is very deliberate,  meaning, they have to
+            remind themselves to check their blind spots, turn their indicator on and so  on. However, after years of experience,
+            these processes become automatic, in a way that the  individual can perform them without thinking.  
+        </div>
+    </div>
+
+    <div class="infoSlide slide6" >
+        <div class="infoSubtitle">
+            Sources 
+        </div>
+        <div class = "infoText">
+            https://thedecisionlab.com/reference-guide/neuroscience/hebbian-learning   
+        </div>
+        <div class = "infoText">
+            https://www.psychologytoday.com/us/basics/learned-helplessness
+        </div>
+    </div>
+
+
+
+    <div class = "infoPaginationRow">
+        <div class = "dot p1 active "></div>
+        <div class = "dot p2"></div>
+        <div class = "dot p3"></div>
+        <div class = "dot p4"></div>
+        <div class = "dot p5"></div>
+        <div class = "dot p6"></div>
+    </div>
+
+    <div class="next iN" >next</div>
+    <div class="prev iP">prev</div>
+    
+    
+</div>
+
+<div  id="hdDiv" class="popUp infoPopup activeDiv">
+    <div class="infoCloseContainer">
+        <button class="infoCloseButton"></button>
+    </div>
+
+    <div class="infoSlide slide1" >
+        <div class="infoTitle">
+            Habit Discontinuity Hypothesis 
+        </div>
+        <div class = "infoText">
+            Verplanken and Wood (2006) theorised that habit strength may be weakened, or even broken, by a sufficiently
+            large change in the context that a behaviour is performed. This hypothesis is one of the keys to breaking
+            a bad habit. To break a habit it is essential to know what a habit is. Verplanken et al (2018) describes
+            habits as a response to the specific contextual cues. These responses are ingrained by repetitive action
+            being conducted after the same cue over a period of time.
+        </div>
+    </div>
+
+    <div class="infoSlide slide2" >
+        <div class="infoSubtitle">
+            1) Unfreezing old habit 
+        </div>
+        <div class = "infoText">
+            Habits are embedded and sustained by larger structures. These structures can be explained in terms of force fields (may include personal, social and situational factors) which are in quasi-stationary equilibrium. Prevalent strong habits freeze the system and prevent the intervention to move the equilibrium to higher state. Inorder to make the intervention successful, it needs to unfreeze the force field by making the habit ineffective. This should be preceded by freezing the new state not just by individual positive intentions but alo through social norms, infrastructure, socio-cultural changes and habits.
+        </div>
+    </div>
+
+    <div class="infoSlide slide3" >
+        <div class = "infoText">
+            Burnes, B. (2004). This article aims to evaluate Lewin's ideas and cast doubt on the validity of these views. How a proposed change should develop through time is described by Lewin's three stage model of change. We must assess the scope and complexity of the field in order to comprehend group behaviour as well as the behaviour of specific group members. This is often referred to as field theory, and it's frequently used to create change-models. 
+        </div>
+    </div>
+
+    <div class="infoSlide slide4" >
+        <div class="infoSubtitle">
+            2) Information Acquisition and Processing 
+        </div>
+        <div class = "infoText">
+            People search for or pay less attention to information that is relevant to their choices when strong habits are present, especially information that offers alternatives to habitual behaviours. Strong habits are also linked to the employment of non-compensatory decision-making techniques, which need less focus and mental effort. Discontinuities, on the other hand, cause people to adopt more intentional mindsets.  
+        </div>
+    </div>
+
+    <div class="infoSlide slide5" >
+        <div class="infoSubtitle">
+           3) Value Activation or Change 
+        </div>
+        <div class = "infoText">
+            When external circumstances are favourable, internal motivations are more likely to show up in consistent conduct. Contextual disruption offers a chance for current values to show up in a brand-new behaviour that is consistent with those values. Existing contextual cues cannot influence conduct as effectively as sufficient motivation. 
+        </div>
+    </div>
+
+    <div class="infoSlide slide6" >
+        <div class="infoSubtitle">
+            Example
+        </div>
+        <div class = "infoText">
+            Let me tell you my example, so during lockdown I had a bad habit of munching on chips at night while watching Netflix. Now, after reading about the theory can you guess what my contextual cue was? Yes, it was watching Netflix.Also, this was a time when I was waiting for my Post-grad college to begin so I didn’t have anything specific going on. So no matter how hard I decided to not munch late at night I would end up grabbing something to eat and then feel guilty about it later. But eventually when the lockdown was lifted and my college started, I would end up having a lot of work or socialising to do and so I wouldn’t have time to watch any movie or series at night. So as you can tell the contextual cue is absent because of change in situation, this led to breaking of munching at night. 
+            I’m sure now you can also connect to some habit of yours that you stopped 
+               
+        </div>
+        
+    </div>
+
+    <div class="infoSlide slide7" >
+        <div class="infoSubtitle">
+            Sources 
+        </div>
+        <div class = "infoText">
+            Verplanken, B., Roy, D., & Whitmarsh, L. (2018). Cracks in the wall: Habit discontinuities as vehicles for behavior change. In The psychology of habit (pp. 189-205). Springer, Cham.  
+        </div>
+        <div class = "infoText">
+            Burnes, B. (2004). Kurt Lewin and the planned approach to change: a re‐appraisal. Journal of Management studies, 41(6), 977-1002.
+        </div>
+        <div class = "infoText">
+            Clark, B., Chatterjee, K., & Melia, S. (2016). Changes to commute mode: The role of life events, spatial context and environmental attitude. Transportation Research Part A: Policy and Practice, 89, 89-105.
+        </div>
+        <div class = "infoText">
+            Hanss, D. (2012). Explaining sustainable consumption. Findings from cross sectional and intervention approaches.
+        </div>
+        <div class = "infoText">
+            Verplanken B, Wood W (2006) Interventions to break and create consumer habits. Journal of Public Policy and Marketing 25: 90–103.
+        </div>
+    </div>
+
+
+
+    <div class = "infoPaginationRow">
+        <div class = "dot p1 active "></div>
+        <div class = "dot p2"></div>
+        <div class = "dot p3"></div>
+        <div class = "dot p4"></div>
+        <div class = "dot p5"></div>
+        <div class = "dot p6"></div>
+        <div class = "dot p7"></div>
+    </div>
+
+    <div class="next iN" >next</div>
+    <div class="prev iP">prev</div>
+</div>
+
+<div  id="tpbDiv" class="popUp infoPopup activeDiv">
+    <div class="infoCloseContainer">
+        <button class="infoCloseButton"></button>
+    </div>
+
+    <div class="infoSlide slide1" >
+        <div class="infoTitle">
+            The theory of planned Behaviour
+        </div>
+        <div class = "infoText">
+            It is fascinating to see how we live our lives in a way, where we don’t have to consciously think about our every decision, it happens almost seamlessly and automatically. The tendencies to act in a certain way in a particular situation are called habits. Since, humans are social animals and our day also includes a lot of interacting with other people. So, imagine, if we had to think about every decision in our life thoroughly, write using pen and paper, calculate every possibility and then take the behaviour according to that decision, our lives would be very boring, tedious and inefficient, right?
+        </div>
+    </div>
+
+    <div class="infoSlide slide2" >
+        
+        <div class = "infoText">
+            So, it makes sense for us to be curious to learn about how we make decisions which help us go about our day and interact, with such efficiency and without the hard effort of calculating everything practically. As learners who are curious about habits and  behaviour, we are called social psychologists. As psychologists, we want to understand more about how we behave in a certain way, in a situation, how our habits work, and how we can use this knowledge to help us change our behaviour in situations such as addictions and make our lives better and healthier.
+        </div>
+    </div>
+
+    <div class="infoSlide slide3" >
+        <div class = "infoText">
+            The psychologists developed a few theories to determine how a certain behaviour comes into play. Take for an example, when you go to buy a laptop, what do we think first? The approach towards this behaviour starts from the thought - if buying a laptop makes sense for me or not. So, the attitude towards the action/ behaviour is guiding us towards the behaviour, in this case - you feeling a need for a new laptop - is important before buying a laptop. Attitude basically means an individual’s inclination to take a certain type of behaviour, in this case towards buying a new laptop.
+        </div>
+    </div>
+
+    <div class="infoSlide slide4" >
+        <div class="infoText">
+            ATTITUDE —> BEHAVIOUR
+        </div>
+        <div class = "infoText">
+            Historically, it was believed that attitude is the ultimate factor in predicting behaviour. From our previous example, feeling the need to buy a new laptop is not the only factor that makes us go to the store and buy a new laptop. The motivation towards going to the store and checking newer laptops and deciding one informatively is a key factor that lies between attitude and behaviour. So, our intention to follow through with a course of action also matters. So, our new theory to predict behaviour becomes -  
+        </div>
+    </div>
+
+    <div class="infoSlide slide5" >
+        <div class="infoText">
+            ATTITUDE —> BEHAVIOURAL INTENTIONS —> BEHAVIOUR
+        </div>
+        <div class = "infoText">
+            Now, we see that this relationship makes more sense than directly correlating attitude to behaviour. 
+            Since the relationship is so complicated, there might be more factors that affect our behaviour. Back to the laptop example, our belief of what others will think of me having this laptop or not having it, also guides to the motivation - behavioural intention - of us buying a new laptop or not. So, the social factor also needs to be added to our model.
+            Since it is the perceived social pressure or norm, we can include the social factor under the name of subjective norms
+        </div>
+    </div>
+
+    <div class="infoSlide slide6" >
+        <div class = "infoText">
+            This is called the Theory of reasoned action, which was proposed by Fishbein and Ajzen (1975).
+        </div>
+        <div class = "infoText">
+            Now, we have included attitudes and subjective norms to our model which adds to behavioural intention which leads to a behavioural action. Lets, look back again to our example of the laptop. There are a lot of variants in the laptop brands, types according to the features they provide. So, one needs to research first for which laptop to buy according to his/her need. It can be tedious work, especially if you are a new user. But, if you have a friend, who works at or owns a computer store. You can just go and ask them for advice. So, the task of buying a laptop feels a lot easier in the second case. This is called Perceived Behavior control. Basically, simple behaviours are greater the perceived control over it, and hence more is the likelihood that that behaviour will be enacted.         
+        </div>
+    </div>
+
+    <div class="infoSlide slide7" >
+        <div class = "infoSubtitle">
+            Example
+        </div>
+        <div class = "infoText">
+            when you go to buy a laptop, what do we think first? feeling the need to buy a new laptop is not the only factor that makes us go to the store and buy a new laptop. The motivation towards going to the store and checking newer laptops and deciding one informatively is a key factor that lies between attitude and behaviour. The laptop example, our belief of what others will think of me having this laptop or not having it, also guides to the motivation
+        </div>
+    </div>
+
+    <div class="infoSlide slide8" >
+        <div class="infoSubtitle">
+            Sources 
+        </div>
+        <div class = "infoText">
+            Christopher J. Armitage & Julie Christian: Attitudes to Behaviour: Basic and Applied Research on the Theory of Planned Behaviour; Current Psychology: Developmental, Learning, Personality, Social. Fall 2003, Vol. 22, No. 3, pp. 187-195.   
+        </div>
+        <div class = "infoText">
+            Christopher J. Armitage & Julie Christian: Attitudes to Behaviour: Basic and Applied Research on the Theory of Planned Behaviour; Current Psychology: Developmental, Learning, Personality, Social. Fall 2003, Vol. 22, No. 3, pp. 187-195.  
+        </div>
+    </div>
+
+
+
+    <div class = "infoPaginationRow">
+        <div class = "dot p1 active "></div>
+        <div class = "dot p2"></div>
+        <div class = "dot p3"></div>
+        <div class = "dot p4"></div>
+        <div class = "dot p5"></div>
+        <div class = "dot p6"></div>
+        <div class = "dot p7"></div>
+        <div class = "dot p8"></div>
+    </div>
+
+    <div class="next iN" >next</div>
+    <div class="prev iP">prev</div>
+    
+    
+</div>
+
+<div  id="ftDiv" class="popUp infoPopup activeDiv">
+    <div class="infoCloseContainer">
+        <button class="infoCloseButton"></button>
+    </div>
+
+    <div class="infoSlide slide1" >
+        <div class="infoTitle">
+            Flow Theory  
+        </div>
+        <div class = "infoText">
+            Have you ever been so ‘lost in thought’ that time itself seemed to alter? 
+        </div>
+        <div class = "infoText">
+            Have you lost yourself while gaming, where you concentrated and focused your attention on the moment – allow yourself to be lost ‘in the zone’ and do some unbelievable moves! 
+        </div>
+        <div class = "infoText">
+            If you were able to relate to any of this- what you have experienced is the state of flow.
+        </div>
+    </div>
+
+    <div class="infoSlide slide2" >
+        <div class="infoSubtitle">
+            1) Hyperfocus 
+        </div>
+        <div class = "infoText">
+            In the context of positive psychology, "flow" refers to a cognitive state in which one is totally absorbed in an activity, such as surfing or writing or even painting. It emphasises the significance of "getting lost in the process" rather than the goal. The subjective condition in which a person performs at their highest level while having their attention so narrowly focused on a task that the experience is so delightful that people will participate only for the pleasure of doing it. The process is what matters, not the outcome.
+        </div>
+    </div>
+
+    <div class="infoSlide slide3" >
+        <div class="infoSubtitle">
+            2) Autotelic Personality
+        </div>
+        <div class = "infoText">
+            According to Cskszentmihályi's theory, some personality types may be more adept at achieving flow than the typical individual.These qualities include curiosity, perseverance, a low sense of self-importance, and a strong desire to engage in activities for their own sake. Being autotelic is engaging in a self-contained activity without considering its potential benefits in the future.
+        </div>
+    </div>
+
+    <div class="infoSlide slide4" >
+        <div class="infoSubtitle">
+            3) Consciousness & Concept of Self
+        </div>
+        <div class = "infoText">
+            In his book Flow, Csikszentmihalyi described flow as "a state in which people are so engaged in an activity that nothing else seems to matter." The subjective condition in which a person performs at their highest level that considerations like exhaustion and boredom have no bearing. In this state, the person is likely to lose all awareness of the activities happening around him, within him and the sense of time, including bodily needs. Csikszentmihályi states, this happens because the person in the flow state is fully focused on the work at hand; there is no more attention to be devoted.
+        </div>
+    </div>
+
+    <div class="infoSlide slide5" >
+        <div class="infoSubtitle">
+           4) Balanced challenge & Skill level 
+        </div>
+        <div class = "infoText">
+            Experimental evidence shows that a balance between individual skills, and demands of the task elicits the flow experience in individuals. Anxiety can be caused by challenges that are more difficult than your ability level, and boredom can be caused by challenges that are easier than your skill level.
+        </div>
+        <div class="infoText">
+            Keep in mind that "flow" activities and "leisure" activities are not the same thing. A good example of a leisure activity that does not cause “flow” is visiting a friend. There is a sensation of effortlessness and the exercise itself is delightful.
+        </div>
+        <div class="infoText">
+            It was concluded that respondents reported a similar experience, enjoyed so much that they were willing to go to great lengths to experience it again.
+        </div>
+    </div>
+
+    <div class="infoSlide slide6" >
+        <div class="infoSubtitle">
+           5) Summary of the Characteristics of Flow
+        </div>
+        <div class = "infoText">
+            Strike of balance is there between challenge and skills in the activity involved.
+        </div>
+        <div class="infoText">
+            Concentration on the task at hand
+        </div>
+        <div class="infoText">
+            Sense of control over the task
+        </div>
+        <div class="infoText">
+            Loss of self-consciousness: actions and awareness are merged, losing self-consciousness.
+        </div>
+        <div class="infoText">
+            Transformation of time (speeding up/slowing down)
+        </div>
+        <div class="infoText">
+            A sense of personal completion, a sense of discovery, and a sense of community.
+        </div>
+        <div class="infoText">
+            Effortlessness and ease
+        </div>
+        <div class="infoText">
+            So, what does positive psychology say about the experiential lens of flow? 
+        </div>
+        <div class="infoText">
+            Flow can lead to experiencing life with more wholesomeness and intensity. It also gives our experience more meaning and strengthens the definition of who we are. Overall experience of flow can improve overall satisfaction in life.
+        </div>
+    </div>
+
+    <div class="infoSlide slide7" >
+        <div class="infoSubtitle">
+            Example
+        </div>
+        <div class = "infoText">
+            When Arav plays shooting games on his PC, he slowly starts getting more intense while playing the game. With each level and mission he clears, he is challenged with more difficult missions. With the increasing difficulty, the intensity of gaming increases and Arnav starts to lose himself in the game. With time he is not aware of what's around him and he is in flow of the game. In flow, Arnav can do difficult missions easily and tasks which seem to be impossible are made possible.
+               
+        </div>
+        
+    </div>
+
+    <div class="infoSlide slide8" >
+        <div class="infoSubtitle">
+            Sources 
+        </div>
+        <div class = "infoText">
+            Milija Šimleša, Jérôme Guegan, Edouard Blanchard, Franck Tarpin-Bernard,Stéphanie Buisine: The Flow Engine Framework: A Cognitive Model of Optimal Human Experience
+        </div>
+        <div class = "infoText">
+            Traits of Flow According to Mihaly Csikszentmihalyi
+https://positivepsychology.com/mihaly-csikszentmihalyi-father-of-flow/
+
+        </div>
+        <div class = "infoText">
+            What is Flow Theory? What does this mean for our students?
+            https://www.youtube.com/watch?v=iUsOCR1KKms&t=160s
+            
+        </div>
+        
+    </div>
+
+
+
+    <div class = "infoPaginationRow">
+        <div class = "dot p1 active "></div>
+        <div class = "dot p2"></div>
+        <div class = "dot p3"></div>
+        <div class = "dot p4"></div>
+        <div class = "dot p5"></div>
+        <div class = "dot p6"></div>
+        <div class = "dot p7"></div>
+        <div class = "dot p8"></div>
+    </div>
+
+    <div class="next iN" >next</div>
+    <div class="prev iP">prev</div>
+</div>
+
+
+</body>
+<script type="importmap">
+    {
+        "imports": {
+        "three": "https://unpkg.com/three@0.146.0/build/three.module.js"
+        }
+    }
+    </script>
+
+<script type="module">
+
+//Module imports
+import * as THREE from 'three';
+import { PointerLockControls } from 'https://unpkg.com/three@0.146.0/examples/jsm/controls/PointerLockControls.js'; 
+import {GLTFLoader} from 'https://unpkg.com/three@0.146.0/examples/jsm/loaders/GLTFLoader.js';
+
+const loadingScreen = $("#loadingScreen");
+const loadingProgress = $("#loadingProgress");
+const loadingPercent = $("#loadingPercent");
+const loadingFiles = $("#loadingFiles");
+
+let introDiv = $('#introDiv');
+
+const manager = new THREE.LoadingManager();
+manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+    loadingProgress.css("width", "0%");
+    loadingPercent.text("Loading... 0%");
+    loadingFiles.text(String(itemsLoaded) + " of " + String(itemsTotal) + " files loaded");
+};
+
+manager.onLoad = function ( ) {
+    if(loadingScreen.css("display") != "none"){
+                loadingScreen.css("display", "none");
+    }
+
+    introDiv.css("display", "block");
+	console.log( 'Loading complete!');
+};
+
+
+manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    let percent = String(Math.floor((itemsLoaded/itemsTotal)*100))+"%";
+    loadingProgress.css("width", percent);
+    loadingPercent.text("Loading... " + percent);
+    loadingFiles.text(String(itemsLoaded) + " of " + String(itemsTotal) + " files loaded");
+};
+
+manager.onError = function ( url ) {
+
+	console.log( 'There was an error loading ' + url );
+
+};
+
+// Canvas Initialization
+const canvas = document.querySelector('#c');
+const renderer  = new THREE.WebGLRenderer({canvas, antialias: true});
+renderer.setSize(window.innerWidth*2, window.innerHeight*2, false );
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.physicallyCorrectLights = true;
+
+// Scene Initialization
+const scene = new THREE.Scene();
+
+
+// Camera Initialization
+const fov = 60;
+const aspect = (window.innerWidth/ window.innerHeight);
+const near = 0.01;
+const far = 5000;
+
+const camera = new THREE.PerspectiveCamera (fov, aspect, near, far);
+const playerHeight = 1.6;
+const zoom = 15;
+
+// const camera = new THREE.OrthographicCamera( window.innerWidth / - zoom, window.innerWidth / zoom, window.innerHeight / zoom, window.innerHeight / - zoom, 1, 1000 );
+camera.position.y = playerHeight;
+camera.position.z = 15;
+camera.position.x = 0;
+
+//enviroment setup
+
+const light1 = new THREE.AmbientLight( 0xffffff, 1 );
+scene.add(light1);
+
+const pointLight = new THREE.PointLight( 0xffffff, 45, 100 );
+pointLight.position.set( 25, 25, 25 );
+scene.add( pointLight );
+
+const pointLight1 = new THREE.PointLight( 0xffffff, 45, 100 );
+pointLight1.position.set( -25, 25, -25 );
+scene.add( pointLight1 );
+
+const textureLoader = new THREE.TextureLoader(manager);
+
+const skyTexture = textureLoader.load("./images/bg3.jpg", () => { 
+    const rt = new THREE.WebGLCubeRenderTarget(skyTexture.image.height);
+    rt.fromEquirectangularTexture(renderer, skyTexture);
+    scene.background = rt.texture;
+});
+
+const gltfLoader = new GLTFLoader(manager);
+
+let mixer;
+let action
+let currentClip = 0;
+
+let root;
+gltfLoader.load('./models/scene2.gltf', (gltf) => {
+    root = gltf;
+    scene.add(root.scene);
+    mixer = new THREE.AnimationMixer( root.scene );
+    action = mixer.clipAction( root.animations[0] );
+    action.play();
+    root.scene.position.set(0 , 0 , 0);
+    let scale = 3
+    root.scene.scale.set(scale, scale, scale);
+});
+
+let activateDist = 15;
+
+let introPosition = new THREE.Vector3(0, 0, 0);
+let htPosition = new THREE.Vector3(40.5, 0, -25.5);
+let hdPosition = new THREE.Vector3(-29.6, 0, -30.5);
+let tpbPosition = new THREE.Vector3(-33.3, 0, 33.9);
+let ftPosition = new THREE.Vector3(43, 0, 16.8);
+
+let introGeom = new THREE.SphereGeometry( 5, 32, 16 );
+let htGeom = new THREE.SphereGeometry( 6.5, 32, 16 );
+let hdGeom = new THREE.SphereGeometry( 6.1, 32, 16 );
+let tpbGeom = new THREE.SphereGeometry( 4.8, 32, 16 );
+let ftGeom = new THREE.SphereGeometry( 4.9, 32, 16 );
+
+const material = new THREE.MeshPhongMaterial( { color: 0xeeeae6, opacity: 0.3, transparent: true } );
+
+const introSphere = new THREE.Mesh( introGeom, material );
+introSphere.position.copy(introPosition);
+introSphere.visible = false; 
+
+const htSphere = new THREE.Mesh( htGeom, material );
+htSphere.position.copy(htPosition);
+htSphere.visible = false; 
+
+const hdSphere = new THREE.Mesh( hdGeom, material );
+hdSphere.position.copy(hdPosition);
+hdSphere.visible = false; 
+
+const tpbSphere = new THREE.Mesh( tpbGeom, material );
+tpbSphere.position.copy(tpbPosition);
+tpbSphere.visible = false; 
+
+const ftSphere = new THREE.Mesh( ftGeom, material );
+ftSphere.position.copy(ftPosition);
+tpbSphere.visible = false; 
+
+scene.add( introSphere, htSphere, hdSphere, tpbSphere, ftSphere);
+
+
+
+function triggers(){
+    let cameraPos = new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z);
+
+    if(cameraPos.distanceTo(introPosition) < activateDist){
+        introSphere.visible = true; 
+    } else {  
+        introSphere.visible = false;
+    }
+
+    if(cameraPos.distanceTo(htPosition) < activateDist){
+        htSphere.visible = true; 
+    } else {  
+        htSphere.visible = false;
+    }
+
+    if(cameraPos.distanceTo(hdPosition) < activateDist){
+        hdSphere.visible = true; 
+    } else {  
+        hdSphere.visible = false;
+    }
+
+    if(cameraPos.distanceTo(tpbPosition) < activateDist){
+        tpbSphere.visible = true; 
+    } else {  
+        tpbSphere.visible = false;
+    }
+
+    if(cameraPos.distanceTo(tpbPosition) < activateDist){
+        tpbSphere.visible = true; 
+    } else {  
+        tpbSphere.visible = false;
+    }
+
+    if(cameraPos.distanceTo(ftPosition) < activateDist){
+        ftSphere.visible = true; 
+    } else {  
+        ftSphere.visible = false;
+    }
+
+}
+
+//Controls
+const controls = new PointerLockControls(camera, canvas);
+scene.add(controls.getObject());
+
+let moveForward = false;
+let moveBackward = false;
+let moveLeft = false;
+let moveRight = false;
+
+let prevTime = performance.now();
+const velocity = new THREE.Vector3();
+const direction = new THREE.Vector3();
+
+const clock = new THREE.Clock();
+
+const playerVelocity = new THREE.Vector3();
+const playerDirection = new THREE.Vector3();
+
+
+function getForwardVector() {
+
+    camera.getWorldDirection( playerDirection );
+    playerDirection.normalize();
+    playerDirection.y = 0.3;
+    return playerDirection;
+
+}
+
+function getSideVector() {
+
+    camera.getWorldDirection( playerDirection );
+    playerDirection.normalize();
+    playerDirection.cross( camera.up );
+
+    return playerDirection;
+
+}
+
+function update(deltaTime) {
+    const speed = 2;
+    getForwardVector();
+    getSideVector();
+
+    if (moveForward){
+        playerVelocity.add(getForwardVector().multiplyScalar(speed * deltaTime) ); 
+    }
+
+    if (moveBackward){
+        playerVelocity.add(getForwardVector().multiplyScalar(speed * -deltaTime) ); 
+    } 
+
+    if (moveRight){
+        playerVelocity.add(getSideVector().multiplyScalar(speed * deltaTime) );
+    }
+
+    if (moveLeft){
+        playerVelocity.add(getSideVector().multiplyScalar(speed * -deltaTime) );
+    }
+    
+    const damping =  - deltaTime*5;
+    playerVelocity.addScaledVector( playerVelocity, damping );
+
+    camera.position.z += playerVelocity.z;
+    camera.position.x += playerVelocity.x;
+
+    triggers();
+    
+}
+
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    const time = performance.now();
+
+    const deltaTime = Math.min( 0.1, clock.getDelta() );
+
+    if (root){
+        if(controls.isLocked){
+            update(deltaTime);
+        }
+    }
+
+    if ( mixer ){
+        mixer.update( deltaTime );
+    } 
+    
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Control Event Listeners
+const onKeyDown = function ( event ) {
+
+    switch ( event.code ) {
+
+        case 'ArrowUp':
+        case 'KeyW':
+            moveForward = true;
+            break;
+
+        case 'ArrowLeft':
+        case 'KeyA':
+            moveLeft = true;
+            break;
+
+        case 'ArrowDown':
+        case 'KeyS':
+            moveBackward = true;
+            break;
+
+        case 'ArrowRight':
+        case 'KeyD':
+            moveRight = true;
+            break;
+        case 'KeyE':
+            if(controls.isLocked){
+                controls.unlock();
+            } else if (introDiv.css("display") == "none" && currentDiv.css("display") == "none"){
+                controls.lock();
+            }
+            break;
+        }
+
+
+    };
+
+const onKeyUp = function ( event ) {
+
+    switch ( event.code ) {
+        case 'ArrowUp':
+        case 'KeyW':
+            moveForward = false;
+            break;
+
+        case 'ArrowLeft':
+        case 'KeyA':
+            moveLeft = false;
+            break;
+
+        case 'ArrowDown':
+        case 'KeyS':
+            moveBackward = false;
+            break;
+
+        case 'ArrowRight':
+        case 'KeyD':
+            moveRight = false;
+            break;
+    }
+};
+
+document.addEventListener( 'keydown', onKeyDown );
+document.addEventListener( 'keyup', onKeyUp );
+
+let currentDivIndex = 1;
+let slideIndexLength;
+let currentslideIndex;
+let current 
+let currentDiv;
+let infoNextButton;
+let infoPrevButton;
+let infoCloseButton;
+
+function activateDiv(index){
+    if (currentDivIndex == 1){
+        currentDiv = currentDiv = $("#htDiv"); 
+        slideIndexLength = 5;
+        currentslideIndex = 0;
+    }
+
+    if (currentDivIndex == 2){
+        currentDiv = $("#hdDiv"); 
+        slideIndexLength = 6;
+        currentslideIndex = 0;
+    }
+
+    if (currentDivIndex == 3){
+        currentDiv = $("#tpbDiv"); 
+        slideIndexLength = 7;
+        currentslideIndex = 0;
+    }
+
+    if (currentDivIndex == 4){
+        currentDiv = $("#ftDiv"); 
+        slideIndexLength = 7;
+        currentslideIndex = 0;
+    }
+
+    controls.unlock();
+    currentDiv.css("display", "block");
+    infoNextButton = currentDiv.children(".iN");
+    infoPrevButton = currentDiv.children(".iP");
+    infoCloseButton = currentDiv.children(".infoCloseContainer").children(".infoCloseButton");
+
+    function infoChangeSlides (index) {
+        currentDiv.children(".infoSlide").css("display", "none");
+        currentDiv.children(".slide"+String(index+1)).css("display", "block");
+        currentDiv.children(".infoPaginationRow").children(".dot").removeClass("active");
+        currentDiv.children(".infoPaginationRow").children(".p"+String(index+1)).addClass("active");
+    }
+
+    if (infoNextButton){
+        infoNextButton.click(function(event){
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            currentslideIndex += 1
+            if (currentslideIndex > slideIndexLength){
+                currentslideIndex = slideIndexLength;
+            }
+            infoChangeSlides(currentslideIndex);
+        });
+    }
+
+    if (infoPrevButton){
+        infoPrevButton.click(function(event){
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            currentslideIndex -= 1
+            if (currentslideIndex < 0){
+                currentslideIndex = 0;
+            }
+            infoChangeSlides(currentslideIndex);
+        });
+    }
+
+    if (infoCloseButton){
+        infoCloseButton.click(function(event){
+            currentDiv.css("display", "none");
+            controls.lock();
+        });
+    }
+}
+
+
+
+document.addEventListener('click', function(){
+    if(controls.isLocked){
+        if (introSphere.visible){
+            controls.unlock();
+            introDiv.css("display", "block");
+        }
+
+        if (htSphere.visible){
+            currentDivIndex = 1;
+            activateDiv(currentDivIndex)
+        } else if (hdSphere.visible) {
+            currentDivIndex = 2;
+            activateDiv(currentDivIndex)
+        } else if (tpbSphere.visible) {
+            currentDivIndex = 3;
+            activateDiv(currentDivIndex)
+        } else if (ftSphere.visible) {
+            currentDivIndex = 4;
+            activateDiv(currentDivIndex)
+        }
+    }
+});
+
+let introPopupIndex = 0;
+
+function introChangeSlide(index){
+    let p1s1 = $("#p1s1");
+    let p1s2 = $("#p1s2");
+    let p1s3 = $("#p1s3");
+
+     
+    if(index == 0){
+        p1s1.css("display", "block");
+        p1s2.css("display", "none");
+        p1s3.css("display", "none");
+
+        $(".dot").removeClass("active");
+        $("#p1p1").addClass("active");
+
+    } else if(index == 1){
+        p1s1.css("display", "none");
+        p1s2.css("display", "block");
+        p1s3.css("display", "none");
+
+        $(".dot").removeClass("active");
+        $("#p1p2").addClass("active");
+
+    } else if(index == 2){
+        p1s1.css("display","none" );
+        p1s2.css("display", "none");
+        p1s3.css("display", "block");
+
+        $(".dot").removeClass("active");
+        $("#p1p3").addClass("active");
+
+    }
+}
+
+let introAudio = document.getElementById("introAudio");
+console.log(introAudio);
+$("#introPlayMute").click(function(){
+    
+    if (introAudio.paused){
+        introAudio.play();
+    } else {
+        introAudio.pause();
+    }
+
+    
+});
+
+$("#np1").click(function(){
+    introPopupIndex += 1;
+    if(introPopupIndex > 2){
+        introPopupIndex = 2;
+    }
+    if(introPopupIndex == 1){
+        if (!introAudio.paused){
+            introAudio.pause();
+        }
+    }
+    introChangeSlide(introPopupIndex);
+});
+
+$("#pp1").click(function(){
+    introPopupIndex -= 1;
+    if(introPopupIndex < 0){
+        introPopupIndex = 0;
+    }
+    introChangeSlide(introPopupIndex);
+});
+
+$("#introStartButton").click(function(){
+    introDiv.css("display", "none");
+    controls.lock();
+});
+
+$("#introCloseButton").click(function() {
+    if (!introAudio.paused){
+        introAudio.pause();
+    }
+    introDiv.css("display", "none");
+    controls.lock();
+});
+
+
+
+
+
+</script>
